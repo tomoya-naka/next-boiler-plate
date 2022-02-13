@@ -1,24 +1,30 @@
 {
-  "extends": ["next", "next/core-web-vitals", "prettier"],
+  "extends": [
+    "next",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:react/recommended",
+    "next/core-web-vitals",
+    "prettier"
+  ],
   "env": {
     "browser": true,
-    "es2021": true
+    "node": true,
+    "es6": true,
+    "jest": true
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaFeatures": { "jsx": true },
+    "project": "./tsconfig.json"
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "react", "react-hooks", "eslint-plugin-import"],
   "rules": {
+    "react": { "version": "detect" },
     "semi": ["error", "always"],
-    "import/order": [
-      "error",
-      {
-        "alphabetize": {
-          "order": "asc"
-        }
-      }
-    ]
+    "import/order": [2, { "alphabetize": { "order": "asc" } }],
+    "react-hooks/rules-of-hooks": "error"
   }
 }
